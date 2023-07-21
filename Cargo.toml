@@ -1,0 +1,11 @@
+[package]
+name = "goods-management-system-rust"
+version = "0.1.0"
+edition = "2023"
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[dependencies]
+yew = { version="0.20", features=["csr"] }
+yew-router = "0.17"
+material-yew = { version="0.3" , features = ["full"] }
