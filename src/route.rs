@@ -2,6 +2,7 @@ use yew_router::prelude::*;
 use yew::prelude::*;
 
 mod product_list;
+mod product_detail;
 
 #[derive(Debug, Clone, Copy, PartialEq, Routable)]
 enum Route {

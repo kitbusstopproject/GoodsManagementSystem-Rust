@@ -2,7 +2,7 @@ use yew::prelude::*;
 use material_yew::MatButton;
 
 #[function_component(App)]
-pub fn product_list(id: u32) -> Html {
+pub fn product_list() -> Html {
     html! {
         <main>
             <h1>{ "Product List" }</h1>

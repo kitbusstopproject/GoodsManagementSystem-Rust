@@ -312,6 +312,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "goods-management-system-rust"
+version = "0.1.0"
+dependencies = [
+ "material-yew",
+ "yew",
+ "yew-router",
+]
+
+[[package]]
 name = "hashbrown"
 version = "0.12.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -540,15 +549,6 @@ name = "route-recognizer"
 version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "afab94fb28594581f62d981211a9a4d53cc8130bbcbbb89a0440d9b8e81a7746"
-
-[[package]]
-name = "routing-sample"
-version = "0.1.0"
-dependencies = [
- "material-yew",
- "yew",
- "yew-router",
-]
 
 [[package]]
 name = "rustversion"
