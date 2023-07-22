@@ -10,7 +10,6 @@ enum Route {
     ProductList,
     #[at("/product/:id")]
     ProductDetail{ id: u32 },
-
 }
 
 fn switch(route: Route) -> Html {
