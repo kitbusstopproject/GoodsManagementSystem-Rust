@@ -3,6 +3,12 @@ use serde::{Deserialize, Serialize};
 
 
 const NAME_SPACE: &str = "inventory-control-bussropprj/v1";
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
+pub struct Date {
+    pub nanoseconds: u64,
+    pub seconds: u64,
+}
+
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 pub struct Item {
@@ -10,7 +16,7 @@ pub struct Item {
     pub item_name: String,
     pub maker: String,
     pub model_number: String,
-    pub registered_date: String,
+    pub registered_date: Date,
     pub supplier: String,
 }
 
@@ -18,7 +24,7 @@ impl FireStoreResource for Item {
     type ParamForPath = String;
 
     fn path(_: &Self::ParamForPath) -> String {
-        format!("{}/items", NAME_SPACE)
+        format!("items")
     }
 }
 

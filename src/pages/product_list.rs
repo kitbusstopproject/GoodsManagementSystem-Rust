@@ -1,7 +1,7 @@
 use yew::prelude::*;
 use material_yew::MatButton;
 
-use firestore_hooks::{use_document, NotFetched};
+use firestore_hooks::{use_document, use_collection, NotFetched};
 use model::Item;
 
 #[function_component(App)]
@@ -10,6 +10,10 @@ pub fn product_list() -> Html {
         &"".to_string(),
         "iY3FmgCEIAdEAzWPGSd6"
     );
+    let col = use_collection::<Item>(
+        &"".to_string(),
+    );
+    log::info!("col: {:?}", col);
     log::info!("data: {:?}", data);
     html! {
         <main>

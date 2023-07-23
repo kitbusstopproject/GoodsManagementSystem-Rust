@@ -27,7 +27,7 @@ const addDocument = (path: string, data: string, onComplete: (id: string) => voi
 
 const getDocument = (path: string, onComplete: (res: string) => void, onError: () => void) => {
     const docRef = doc(db, path);
-    getDoc(docRef).then((res) => onComplete(JSON.stringify({id: res.id,...res.data()}))).catch(onError);
+    getDoc(docRef).then((res) => onComplete(JSON.stringify({id: res.id, ...res.data()}))).catch(onError);
 }
 
 //@ts-expect-error
