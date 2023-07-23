@@ -52,6 +52,25 @@ dependencies = [
 ]
 
 [[package]]
+name = "firestore"
+version = "0.1.0"
+dependencies = [
+ "js-sys",
+ "serde",
+ "serde_json",
+ "wasm-bindgen",
+ "web-sys",
+]
+
+[[package]]
+name = "firestore_hooks"
+version = "0.1.0"
+dependencies = [
+ "firestore",
+ "yew",
+]
+
+[[package]]
 name = "fnv"
 version = "1.0.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -315,8 +334,12 @@ dependencies = [
 name = "goods-management-system-rust"
 version = "0.1.0"
 dependencies = [
+ "firestore",
+ "firestore_hooks",
  "log",
  "material-yew",
+ "model",
+ "wasm-bindgen",
  "wasm-logger",
  "yew",
  "yew-router",
@@ -405,6 +428,15 @@ name = "memchr"
 version = "2.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d"
+
+[[package]]
+name = "model"
+version = "0.1.0"
+dependencies = [
+ "firestore",
+ "serde",
+ "serde_json",
+]
 
 [[package]]
 name = "num_cpus"

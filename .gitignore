@@ -1,3 +1,10 @@
-/dist/
 /target/
+
+/dist/
+assets
+
 .env*
+
+node_modules
+
+```
