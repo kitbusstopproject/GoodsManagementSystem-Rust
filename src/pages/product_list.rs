@@ -17,7 +17,7 @@ pub fn product_list() -> Html {
     log::info!("data: {:?}", data);
     html! {
         <main>
-            <h1>{ "Product List" }</h1>
+            <h1 class={classes!("text-red-100")}>{ "Product List" }</h1>
             <span onclick={Callback::from(|_| { log::info!("Clicked!"); })}>
                 <MatButton 
                     label={"Click me!"}
