@@ -1,0 +1,27 @@
+{
+  "name": "goods-management-system-rust",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev:rs": "trunk serve",
+    "dev:js": "esbuild js/index.ts --bundle --outdir=assets --target=es2015 --watch --minify",
+    "dev:css": "tailwindcss -i tailwind.css -o assets/index.css",
+    "build:rs": "trunk build",
+    "build:js": "esbuild js/index.ts --bundle --outdir=assets --target=es2015 --minify",
+    "build:css": "tailwindcss -i tailwind.css -o assets/index.css --minify",
+    "dev": "concurrently 'pnpm:dev:js' 'pnpm:dev:rs' 'pnpm:dev:css'",
+    "build": "pnpm build:rs && pnpm build:js && pnpm build:css",
+    "clean:win": "rmdir /s assets && trunk clean",
+    "clean:mac": "rm -rf assets/* && trunk clean"
+  },
+  "dependencies": {
+    "esbuild": "^0.18.15",
+    "firebase": "^10.1.0",
+    "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.2",
+    "concurrently": "^8.2.0",
+    "tailwindcss": "^3.3.3"
+  }
+}
