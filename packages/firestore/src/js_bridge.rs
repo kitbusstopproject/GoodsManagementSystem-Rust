@@ -1,4 +1,3 @@
-use js_sys::Function;
 use wasm_bindgen::{
     prelude::{wasm_bindgen, Closure},
     JsValue,

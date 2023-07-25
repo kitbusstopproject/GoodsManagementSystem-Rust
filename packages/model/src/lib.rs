@@ -2,7 +2,6 @@ use firestore::FireStoreResource;
 use serde::{Deserialize, Serialize};
 
 
-const NAME_SPACE: &str = "inventory-control-bussropprj/v1";
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 pub struct Date {
     pub nanoseconds: u64,

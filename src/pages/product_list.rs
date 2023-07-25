@@ -1,31 +1,58 @@
+use chrono::{TimeZone, Local};
 use yew::prelude::*;
-use material_yew::MatButton;
 
-use firestore_hooks::{use_document, use_collection, NotFetched};
+use firestore_hooks::{use_collection, NotFetched};
 use model::Item;
 
 #[function_component(App)]
 pub fn product_list() -> Html {
-    let data = use_document::<Item>(
-        &"".to_string(),
-        "iY3FmgCEIAdEAzWPGSd6"
-    );
-    let col = use_collection::<Item>(
+    let docs = use_collection::<Item>(
         &"".to_string(),
     );
-    log::info!("col: {:?}", col);
-    log::info!("data: {:?}", data);
-    html! {
-        <main>
-            <h1 class={classes!("text-red-100")}>{ "Product List" }</h1>
-            <span onclick={Callback::from(|_| { log::info!("Clicked!"); })}>
-                <MatButton 
-                    label={"Click me!"}
-                    icon={AttrValue::from("code")}
-                />
-            </span>
-            <br />
-            <a href="product/1">{ "Product 1" }</a>
-        </main>
+    log::info!("col: {:?}", docs);
+    let state = (|| Ok(docs?))();
+    match state {
+        Err(NotFetched::Loading) => {
+            return html! { <div>{ "Loading..." }</div> }
+        }
+        Err(NotFetched::Error) => {
+            return html! { <div>{ "エラーが発生しました" }</div> }
+        }
+        Ok(docs) => {
+            let table_rows = docs.iter().map(|item| {
+                let date = Local.timestamp_opt(
+                    item.registered_date.seconds as i64,
+                    item.registered_date.nanoseconds as u32)
+                    .unwrap().to_string();
+                let (date, _) = date.split_at(19);
+                
+                html! {
+                    <tr>
+                        <td>{ &item.category }</td>
+                        <td>{ &item.item_name }</td>
+                        <td>{ &item.model_number }</td>
+                        <td>{ &item.maker }</td>
+                        <td>{ date }</td>
+                        <td>{ &item.supplier }</td>
+                    </tr>
+                }
+            });
+            html! {
+                <main class={classes!("flex", "flex-col", "bg-screen")}>
+                    <h1 class={classes!("text-word")}>{ "Product List" }</h1>
+                    <table class={classes!("table-auto")}>
+                        <tr class={ "bg-screen-2nd" }>
+                            <th>{ "カテゴリ" }</th>
+                            <th>{ "名称" }</th>
+                            <th>{ "モデル番号" }</th>
+                            <th>{ "メーカー" }</th>
+                            <th>{ "登録日" }</th>
+                            <th>{ "購入元" }</th>
+                        </tr>
+                        { for table_rows }
+                    </table>
+                </main>
+            }
+        }
     }
 }

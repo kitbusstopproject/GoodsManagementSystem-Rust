@@ -3,7 +3,7 @@ use material_yew::MatButton;
 
 #[derive(Clone, Properties, PartialEq)]
 pub struct ProductDetailProps {
-    pub id: u32,
+    pub id: String,
 }
 
 #[function_component(App)]

@@ -6,12 +6,12 @@ mod pages;
 use crate::pages::{ProductDetail, ProductList};
 
 
-#[derive(Debug, Clone, Copy, PartialEq, Routable)]
+#[derive(Debug, Clone, PartialEq, Routable)]
 enum Route {
     #[at("/")]
     ProductList,
     #[at("/product/:id")]
-    ProductDetail{ id: u32 },
+    ProductDetail{ id: String },
 }
 
 fn switch(route: Route) -> Html {
