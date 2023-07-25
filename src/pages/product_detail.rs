@@ -25,6 +25,7 @@ pub fn product_detail(props: &ProductDetailProps) -> Html {
     );
 
 
+
     //log::info!("items_col: {:?}", items_col);
     log::info!("items_data: {:?}", items_data);
 
@@ -52,8 +53,11 @@ pub fn product_detail(props: &ProductDetailProps) -> Html {
                     <h1>{ "Product Detail" }</h1>
                     // propsで受け取った商品IDを表示
                     <h1>{ format!("Product ID: {:?}", props.id) }</h1>
+                    // itemsコレクションから取得した値
                     <h1>{ &items_data.category }</h1>
+                    <h1>{ &items_data.isLending }</h1>
                     <h1>{ &items_data.item_name }</h1>
+                    <h1>{ &items_data.lending_log_id }</h1>
                     <h1>{ &items_data.maker }</h1>
                     <h1>{ &items_data.model_number }</h1>
                     //<h1>{ date }</h1>

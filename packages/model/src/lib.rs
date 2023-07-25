@@ -13,7 +13,9 @@ pub struct Date {
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 pub struct Item {
     pub category: String,
+    pub isLending: bool,
     pub item_name: String,
+    pub lending_log_id: String,
     pub maker: String,
     pub model_number: String,
     pub registered_date: Date,
@@ -31,7 +33,7 @@ impl FireStoreResource for Item {
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 pub struct LendingItem {
-    pub is_lending: bool,
+    pub isLending: bool,
     pub items_id: String,
     pub lending_log_id: String,
 }
