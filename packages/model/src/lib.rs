@@ -11,8 +11,9 @@ pub struct Date {
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 pub struct Item {
+    pub id: String,
     pub category: String,
-    pub isLending: bool,
+    pub is_lending: bool,
     pub lending_log_id: String,
     pub item_name: String,
     pub maker: String,
