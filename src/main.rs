@@ -2,7 +2,8 @@ use yew_router::prelude::*;
 use yew::prelude::*;
 
 mod pages;
-
+mod layout;
+use layout::Layout;
 use crate::pages::{ProductDetail, ProductList};
 
 
@@ -24,9 +25,11 @@ fn switch(route: Route) -> Html {
 #[function_component(Main)]
 pub fn app() -> Html {
     html! {
-        <BrowserRouter>
-            <Switch<Route> render={switch} /> // <- must be child of <BrowserRouter>
-        </BrowserRouter>
+        <Layout>
+            <BrowserRouter>
+                <Switch<Route> render={switch} /> // <- must be child of <BrowserRouter>
+            </BrowserRouter>
+        </Layout>
     }
 }
 

@@ -41,17 +41,17 @@ pub fn product_list() -> Html {
                         <td>{ &item.model_number }</td>
                         <td>{ &item.maker }</td>
                         <td>{ &item.supplier }</td>
-                        <td><a href={format!("product/{}", item.id)}>{ "Edit" }</a></td>
+                        <td><a class="hover:underline" href={format!("product/{}", item.id)} >{ "Edit" }</a></td>
                     </tr>
                 }
             });
             
             html! {
-                <main class={"flex flex-col bg-screen p-2"}>
-                    <h1 class={"text-word text-4xl"}>{ "Product List" }</h1>
-                    <table class={"table text-left divide-y divide-word"}>
+                <main class="flex flex-col bg-screen p-2">
+                    <h1 class="text-word text-4xl">{ "Product List" }</h1>
+                    <table class="table text-left divide-y divide-word">
                         <thead>
-                            <tr class={ "bg-screen-2nd border-bottom" }>
+                            <tr class="bg-screen-2nd border-bottom" >
                                 <th>{ "名称" }</th>
                                 <th>{ "カテゴリ" }</th>
                                 <th>{ "登録日" }</th>
