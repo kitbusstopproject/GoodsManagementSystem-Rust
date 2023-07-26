@@ -28,10 +28,10 @@ pub fn edit_item(props: &EditItemProps) -> Html {
                 <div class="">
                     <h1 class="text-2xl">{ "Edit Item" }</h1>
                     <div class="flex flex-col">
-                        <InputForm label="名称" value={item.item_name.clone()} />
-                        <InputForm label="メーカー" value={item.maker.clone()} />
-                        <InputForm label="モデル番号" value={item.model_number.clone()} />
-                        <InputForm label="購入元" value={item.supplier.clone()} />
+                        <InputForm id="item_name" label="名称" value={item.item_name.clone()} />
+                        <InputForm id="maker" label="メーカー" value={item.maker.clone()} />
+                        <InputForm id="model_number" label="モデル番号" value={item.model_number.clone()} />
+                        <InputForm id="supplier" label="購入元" value={item.supplier.clone()} />
                     </div>
                 </div>
             }

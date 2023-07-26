@@ -5,6 +5,7 @@ use yew::prelude::*;
 
 #[derive(Clone, Properties, PartialEq)]
 pub struct InputProps {
+    pub id: String,
     pub label: String,
     pub value: String,
 }
@@ -27,13 +28,13 @@ pub fn input(props: &InputProps) -> Html {
     };
 
     html! {
-        <div class="my-4">
-            <label for={props.label.clone()} class="text-bold">
-                {format!{"{}", props.label}}
+        <div class="mb-6">
+            <label for={props.id.clone()} class="block mb-2 text-md font-medium text-gray-900" >
+                {&props.label}
                 <br />
                 <input
-                    id={props.label.clone()}
-                    class="px-2 py-1"
+                    id={props.id.clone()}
+                    class="p-2.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 block sm:text-sm border-gra"
                     type="text"
                     value={value.clone()}
                     onchange={on_change}
