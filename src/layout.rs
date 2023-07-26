@@ -42,7 +42,9 @@ pub fn layout(props: &ChildrenOnlyProps) -> Html {
                     {if dark_mode {"🌞"} else {"🌚"}}
                 </button>
             </header>
-            { props.children.clone() }
+            <main class="px-8 py-10">
+                { props.children.clone() }
+            </main>
         </div>
     }
 }

@@ -47,7 +47,7 @@ pub fn product_list() -> Html {
             });
             
             html! {
-                <main class="flex flex-col bg-screen p-2">
+                <main class="flex flex-col bg-screen">
                     <h1 class="text-word text-4xl">{ "Product List" }</h1>
                     <table class="table text-left divide-y divide-word">
                         <thead>
