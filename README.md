@@ -9,7 +9,7 @@ NFCタグを用いた物品管理アプリケーション
 - node
 - pnpm
 - cargo
-- trunk
+- trunk v17
 
 
 ```
