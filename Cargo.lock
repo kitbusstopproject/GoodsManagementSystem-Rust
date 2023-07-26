@@ -24,6 +24,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d301b3b94cb4b2f23d7917810addbbaff90738e0ca2be692bd027e70d7e0330c"
 
 [[package]]
+name = "atoms"
+version = "0.1.0"
+dependencies = [
+ "wasm-bindgen",
+ "web-sys",
+ "yew",
+]
+
+[[package]]
 name = "autocfg"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -376,6 +385,7 @@ dependencies = [
 name = "goods-management-system-rust"
 version = "0.1.0"
 dependencies = [
+ "atoms",
  "chrono",
  "firestore",
  "firestore_hooks",
