@@ -22,3 +22,4 @@ wasm-bindgen = "0.2.76"
 firestore = { path = "packages/firestore" }
 firestore_hooks = { path = "packages/firestore_hooks" }
 model = { path = "packages/model" }
+chrono = "0.4"
