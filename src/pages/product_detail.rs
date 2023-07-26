@@ -23,9 +23,10 @@ pub fn product_detail(props: &ProductDetailProps) -> Html {
     // Firestoreから個々のアイテムの情報を取得するためのフックを使用
     let lending_logs_data = use_document::<LendingLog>(
         &"".to_string(),
-        "fOkaAj2YQ9mr8d2rvmHu" // propsから受け取る値
+        &props.id // propsから受け取る値
     );
 
+    log::info!("props.id: {:?}", props.id);
     //log::info!("items_col: {:?}", items_col);
     log::info!("lending_logs_data: {:?}", lending_logs_data);
 
