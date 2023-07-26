@@ -4,6 +4,8 @@ use yew::prelude::*;
 use firestore_hooks::{use_collection, NotFetched};
 use model::Item;
 
+
+
 #[function_component(App)]
 pub fn product_list() -> Html {
     let docs = use_collection::<Item>(
@@ -28,25 +30,26 @@ pub fn product_list() -> Html {
                 
                 html! {
                     <tr>
-                        <td>{ &item.category }</td>
                         <td>{ &item.item_name }</td>
+                        <td>{ &item.category }</td>
+                        <td>{ date }</td>
                         <td>{ &item.model_number }</td>
                         <td>{ &item.maker }</td>
-                        <td>{ date }</td>
                         <td>{ &item.supplier }</td>
                     </tr>
                 }
             });
+            
             html! {
                 <main class={classes!("flex", "flex-col", "bg-screen")}>
-                    <h1 class={classes!("text-word")}>{ "Product List" }</h1>
+                    <h1 class={classes!("text-word", "text-4xl")}>{ "Product List" }</h1>
                     <table class={classes!("table-auto")}>
                         <tr class={ "bg-screen-2nd" }>
-                            <th>{ "カテゴリ" }</th>
                             <th>{ "名称" }</th>
+                            <th>{ "カテゴリ" }</th>
+                            <th>{ "登録日" }</th>
                             <th>{ "モデル番号" }</th>
                             <th>{ "メーカー" }</th>
-                            <th>{ "登録日" }</th>
                             <th>{ "購入元" }</th>
                         </tr>
                         { for table_rows }
