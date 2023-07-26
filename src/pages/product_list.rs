@@ -47,26 +47,28 @@ pub fn product_list() -> Html {
             });
             
             html! {
-                <main class="flex flex-col bg-screen">
-                    <h1 class="text-word text-4xl">{ "Product List" }</h1>
-                    <table class="table text-left divide-y divide-word">
-                        <thead>
-                            <tr class="bg-screen-2nd border-bottom" >
-                                <th>{ "名称" }</th>
-                                <th>{ "カテゴリ" }</th>
-                                <th>{ "登録日" }</th>
-                                <th>{ "貸出状況" }</th>
-                                <th>{ "モデル番号" }</th>
-                                <th>{ "メーカー" }</th>
-                                <th>{ "購入元" }</th>
-                                <th>{""}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                <div class="flex flex-col">
+                    <h1 class="text-2xl">{ "Product List" }</h1>
+                    <div class="overflow-x-scroll">
+                        <table class="table-fixed text-left divide-y divide-word whitespace-nowrap">
+                            <thead>
+                                <tr class="border-bottom">
+                                    <th>{ "名称" }</th>
+                                    <th>{ "カテゴリ" }</th>
+                                    <th>{ "登録日" }</th>
+                                    <th>{ "貸出状況" }</th>
+                                    <th>{ "モデル番号" }</th>
+                                    <th>{ "メーカー" }</th>
+                                    <th>{ "購入元" }</th>
+                                    <th>{""}</th>
+                                    </tr>
+                                    </thead>
+                            <tbody>
                             { for table_rows }
-                        </tbody>
-                    </table>
-                </main>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             }
         }
     }
