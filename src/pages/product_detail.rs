@@ -1,6 +1,8 @@
 // Yewとmaterial_yewのプリリュード（事前に必要なモジュール）をインポート
 use yew::prelude::*;
 use material_yew::MatButton;
+use chrono::{Local, DateTime, TimeZone};
+
 
 // firestore_hooksからデータのフェッチに関連するフックをインポート
 use firestore_hooks::{use_document, use_collection, NotFetched};
@@ -19,18 +21,16 @@ pub struct ProductDetailProps {
 pub fn product_detail(props: &ProductDetailProps) -> Html {
 
     // Firestoreから個々のアイテムの情報を取得するためのフックを使用
-    let items_data = use_document::<Item>(
+    let lending_logs_data = use_document::<LendingLog>(
         &"".to_string(),
-        "iY3FmgCEIAdEAzWPGSd6" // propsから受け取る値
+        "fOkaAj2YQ9mr8d2rvmHu" // propsから受け取る値
     );
 
-
-
     //log::info!("items_col: {:?}", items_col);
-    log::info!("items_data: {:?}", items_data);
+    log::info!("lending_logs_data: {:?}", lending_logs_data);
 
     // 非同期処理で発生したエラーをハンドリングし、取得したデータをstateに代入
-    let state = (|| Ok(items_data?))();
+    let state = (|| Ok(lending_logs_data?))();
 
 
     // stateをマッチングして適切な要素を表示
@@ -44,24 +44,25 @@ pub fn product_detail(props: &ProductDetailProps) -> Html {
             return html! { <div>{ "エラーが発生しました" }</div> }
         }
         // データの取得が成功した場合
-        Ok(items_data) => {
+        Ok(lending_logs_data) => {
+
+            let date = Local.timestamp_opt(
+                lending_logs_data.lending_date.seconds as i64,
+                lending_logs_data.lending_date.nanoseconds as u32)
+                .unwrap().to_string();
+
             html! {
                 
                 // HTMLを記述する
                 <main>
                     // 見出しとして「Product Detail」と表示
                     <h1>{ "Product Detail" }</h1>
-                    // propsで受け取った商品IDを表示
-                    <h1>{ format!("Product ID: {:?}", props.id) }</h1>
+                    
                     // itemsコレクションから取得した値
-                    <h1>{ &items_data.category }</h1>
-                    <h1>{ &items_data.isLending }</h1>
-                    <h1>{ &items_data.item_name }</h1>
-                    <h1>{ &items_data.lending_log_id }</h1>
-                    <h1>{ &items_data.maker }</h1>
-                    <h1>{ &items_data.model_number }</h1>
-                    //<h1>{ date }</h1>
-                    <h1>{ &items_data.supplier }</h1>
+                    <h1>{ &lending_logs_data.comments }</h1>
+                    <h1>{ date }</h1>
+                    <h1>{ &lending_logs_data.name }</h1>
+                    
                     // マテリアルデザインのボタンを表示。ラベルに「Click me!」を指定し、アイコンに「code」を指定
                     <MatButton label="Click me!" icon={AttrValue::from("code")} />
                 </main>
