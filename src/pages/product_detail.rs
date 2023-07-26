@@ -13,7 +13,7 @@ use model::LendingLog;
 // ProductDetailProps構造体の定義。商品のIDを受け取るためのプロパティ
 #[derive(Clone, Properties, PartialEq)]
 pub struct ProductDetailProps {
-    pub id: u32,
+    pub id: String,
 }
 
 // product_detail関数コンポーネントの定義

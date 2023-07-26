@@ -384,6 +384,7 @@ dependencies = [
  "model",
  "wasm-bindgen",
  "wasm-logger",
+ "web-sys",
  "yew",
  "yew-router",
 ]
