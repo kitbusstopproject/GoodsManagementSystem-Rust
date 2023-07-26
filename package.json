@@ -1,7 +1,6 @@
 {
   "name": "goods-management-system-rust",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
     "dev:rs": "trunk serve",
     "dev:js": "esbuild js/index.ts --bundle --outdir=assets --target=es2015 --watch --minify",

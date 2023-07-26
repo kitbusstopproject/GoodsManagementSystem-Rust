@@ -2,6 +2,7 @@
 name = "goods-management-system-rust"
 version = "0.1.0"
 edition = "2021"
+main = "main.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -17,11 +18,10 @@ yew = { version="0.20", features=["csr"] }
 yew-router = "0.17"
 material-yew = { version="0.3" , features = ["full"] }
 wasm-logger = "0.2"
+chrono = "0.4"
 log = "0.4"
 wasm-bindgen = "0.2.76"
-chrono = "0.4"
 web-sys="0.3"
 firestore = { path = "packages/firestore" }
 firestore_hooks = { path = "packages/firestore_hooks" }
 model = { path = "packages/model" }
-chrono = "0.4"
