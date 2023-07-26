@@ -29,7 +29,7 @@ pub fn product_list() -> Html {
                 let (date, _) = date.split_at(19);
                 let lending_state = if item.is_lending {
                     html!{
-                        <a class="hover:underline" href={format!("/log/{}", item.lending_log_id)}>{"貸出中"}</a>
+                        <a class="hover:underline" href={format!("/product/{}", item.lending_log_id)}>{"貸出中"}</a>
                     }
                 } else {
                     html! { <>{ "-" }</> }
