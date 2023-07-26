@@ -10,7 +10,8 @@ main = "main.rs"
 members = [
     "packages/firestore",
     "packages/firestore_hooks",
-    "packages/model"
+    "packages/model",
+    "packages/atoms"
 ]
 
 [dependencies]
@@ -25,3 +26,4 @@ web-sys="0.3"
 firestore = { path = "packages/firestore" }
 firestore_hooks = { path = "packages/firestore_hooks" }
 model = { path = "packages/model" }
+atoms = { path = "packages/atoms" }

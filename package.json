@@ -9,7 +9,7 @@
     "build:js": "esbuild js/index.ts --bundle --outdir=assets --target=es2015 --minify",
     "build:css": "tailwindcss -i tailwind.css -o assets/index.css --minify",
     "dev": "concurrently 'pnpm:dev:js' 'pnpm:dev:rs' 'pnpm:dev:css'",
-    "build": "pnpm build:rs && pnpm build:js && pnpm build:css",
+    "build": "pnpm build:js && pnpm build:css && pnpm build:rs ",
     "clean:win": "rmdir /s assets && trunk clean",
     "clean:mac": "rm -rf assets/* && trunk clean"
   },

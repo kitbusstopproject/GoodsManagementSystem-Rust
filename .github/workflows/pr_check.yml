@@ -32,13 +32,9 @@ jobs:
       uses: jetli/trunk-action@v0.1.0
       with:
         version: 'latest'
-    - name: Install Yarn
-      run: npm install -g yarn
-    - name: Build rust
-      run: trunk build
-    - name: Build js
-      run: esbuild js/index.ts --bundle --outdir=assets --target=es2015 --minify
-    - name: Build css
-      run: tailwindcss -i tailwind.css -o assets/index.css --minify
+    - name: Install Pnpm
+      run: npm install -g pnpm && pnpm install
+    - name: build
+      run: pnpm build
     - name: Run tests
       run: cargo test --verbose
