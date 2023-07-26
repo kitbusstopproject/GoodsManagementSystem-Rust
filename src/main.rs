@@ -4,7 +4,7 @@ use yew::prelude::*;
 mod pages;
 mod layout;
 use layout::Layout;
-use crate::pages::{ProductDetail, ProductList};
+use crate::pages::{ProductDetail, ProductList, EditItem};
 
 
 #[derive(Debug, Clone, PartialEq, Routable)]
@@ -13,12 +13,15 @@ enum Route {
     ProductList,
     #[at("/product/:id")]
     ProductDetail{ id: String },
+    #[at("/edit/:id")]
+    EditItem{ id: String },
 }
 
 fn switch(route: Route) -> Html {
     match route {
         Route::ProductList => html! { <ProductList /> },
         Route::ProductDetail { id } => html! {<ProductDetail id={id} />},
+        Route::EditItem { id } => html! {<EditItem id={id} />},
     }
 }
 

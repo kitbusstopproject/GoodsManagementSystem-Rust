@@ -28,20 +28,22 @@ pub fn product_list() -> Html {
                     .unwrap().to_string();
                 let (date, _) = date.split_at(19);
                 let lending_state = if item.is_lending {
-                    "貸出中"
+                    html!{
+                        <a class="hover:underline" href={format!("/log/{}", item.lending_log_id)}>{"貸出中"}</a>
+                    }
                 } else {
-                    "-"
+                    html! { <>{ "-" }</> }
                 };
                 html! {
                     <tr>
                         <td>{ &item.item_name }</td>
                         <td>{ &item.category }</td>
                         <td>{ date }</td>
-                        <td>{ lending_state }</td>
+                        <td class="text-center">{ lending_state }</td>
                         <td>{ &item.model_number }</td>
                         <td>{ &item.maker }</td>
                         <td>{ &item.supplier }</td>
-                        <td><a class="hover:underline" href={format!("product/{}", item.id)} >{ "Edit" }</a></td>
+                        <td><a class="hover:underline" href={format!("edit/{}", item.id)}>{ "Edit" }</a></td>
                     </tr>
                 }
             });
@@ -50,9 +52,9 @@ pub fn product_list() -> Html {
                 <div class="flex flex-col">
                     <h1 class="text-2xl">{ "Product List" }</h1>
                     <div class="overflow-x-scroll">
-                        <table class="table-fixed text-left divide-y divide-word whitespace-nowrap">
+                        <table cellpadding="10" class="table-fixed text-left divide-y divide-word whitespace-nowrap mb-4">
                             <thead>
-                                <tr class="border-bottom">
+                                <tr>
                                     <th>{ "名称" }</th>
                                     <th>{ "カテゴリ" }</th>
                                     <th>{ "登録日" }</th>
@@ -61,10 +63,10 @@ pub fn product_list() -> Html {
                                     <th>{ "メーカー" }</th>
                                     <th>{ "購入元" }</th>
                                     <th>{""}</th>
-                                    </tr>
-                                    </thead>
+                                </tr>
+                            </thead>
                             <tbody>
-                            { for table_rows }
+                                { for table_rows }
                             </tbody>
                         </table>
                     </div>
