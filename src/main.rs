@@ -9,11 +9,11 @@ use crate::pages::{ProductDetail, ProductList, EditItem};
 
 #[derive(Debug, Clone, PartialEq, Routable)]
 enum Route {
-    #[at("/")]
+    #[at("/GoodsManagementSystem-Rust/")] // <- this is the default route
     ProductList,
-    #[at("/product/:id")]
+    #[at("/GoodsManagementSystem-Rust/product/:id")]
     ProductDetail{ id: String },
-    #[at("/edit/:id")]
+    #[at("/GoodsManagementSystem-Rust/edit/:id")]
     EditItem{ id: String },
 }
 
