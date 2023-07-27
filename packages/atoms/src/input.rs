@@ -29,13 +29,14 @@ pub fn input(props: &InputProps) -> Html {
 
     html! {
         <div class="mb-6">
-            <label for={props.id.clone()} class="block mb-2 text-md font-medium text-gray-900" >
+            <label for={props.id.clone()} class="block text-md font-medium" >
                 {&props.label}
                 <br />
                 <input
                     id={props.id.clone()}
-                    class="p-2.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 block sm:text-sm border-gra"
+                    class="p-2.5 text-black w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 block sm:text-sm border-gra"
                     type="text"
+                    placeholder={props.value.clone()}
                     value={value.clone()}
                     onchange={on_change}
                 />
