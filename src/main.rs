@@ -17,7 +17,7 @@ pub enum Route {
     #[at("/GoodsManagementSystem-Rust/edit/:id")]
     EditItem{ id: String },
     #[not_found]
-    #[at("/404")]
+    #[at("/GoodsManagementSystem-Rust/404")]
     NotFound,
 }
 
