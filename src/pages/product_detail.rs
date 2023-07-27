@@ -1,11 +1,10 @@
 // Yewとmaterial_yewのプリリュード（事前に必要なモジュール）をインポート
 use yew::prelude::*;
-use material_yew::MatButton;
-use chrono::{Local, DateTime, TimeZone};
+use chrono::{Local, TimeZone};
 
 
 // firestore_hooksからデータのフェッチに関連するフックをインポート
-use firestore_hooks::{use_document, use_collection, NotFetched};
+use firestore_hooks::{use_document, NotFetched};
 // modelモジュールから構造体をインポート
 use model::LendingLog;
 
