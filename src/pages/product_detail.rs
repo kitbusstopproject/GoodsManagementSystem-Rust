@@ -23,11 +23,10 @@ pub fn product_detail(props: &ProductDetailProps) -> Html {
     // Firestoreから個々のアイテムの情報を取得するためのフックを使用
     let lending_logs_data = use_document::<LendingLog>(
         &"".to_string(),
-        &props.id // propsから受け取る値
+        &props.id
     );
 
     log::info!("props.id: {:?}", props.id);
-    //log::info!("items_col: {:?}", items_col);
     log::info!("lending_logs_data: {:?}", lending_logs_data);
 
     // 非同期処理で発生したエラーをハンドリングし、取得したデータをstateに代入
@@ -51,23 +50,28 @@ pub fn product_detail(props: &ProductDetailProps) -> Html {
                 lending_logs_data.lending_date.seconds as i64,
                 lending_logs_data.lending_date.nanoseconds as u32)
                 .unwrap().to_string();
-
+            let (date, _) = date.split_at(19);
+    
             html! {
-                
-                // HTMLを記述する
-                <main>
-                    // 見出しとして「Product Detail」と表示
-                    <h1>{ "Product Detail" }</h1>
-                    
-                    // itemsコレクションから取得した値
-                    <h1>{ &lending_logs_data.comments }</h1>
-                    <h1>{ date }</h1>
-                    <h1>{ &lending_logs_data.name }</h1>
-                    
-                    // マテリアルデザインのボタンを表示。ラベルに「Click me!」を指定し、アイコンに「code」を指定
-                    <MatButton label="Click me!" icon={AttrValue::from("code")} />
-                </main>
-                
+                <div class="flex flex-col">
+                    <h1 class="text-2xl">{ "Product Detail" }</h1>
+                    <table cellpadding="10">
+                        <tbody>
+                            <tr>
+                                <td style="font-weight: bold;">{ "コメント" }</td>
+                                <td>{ &lending_logs_data.comments }</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">{ "氏名" }</td>
+                                <td>{ &lending_logs_data.name }</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">{ "貸出日" }</td>
+                                <td>{ date }</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             }
         }
     }
