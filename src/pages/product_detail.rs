@@ -7,7 +7,6 @@ use chrono::{Local, DateTime, TimeZone};
 // firestore_hooksからデータのフェッチに関連するフックをインポート
 use firestore_hooks::{use_document, use_collection, NotFetched};
 // modelモジュールから構造体をインポート
-use model::Item;
 use model::LendingLog;
 
 // ProductDetailProps構造体の定義。商品のIDを受け取るためのプロパティ

@@ -4,7 +4,7 @@ use yew::prelude::*;
 mod pages;
 mod layout;
 use layout::Layout;
-use crate::pages::{ProductDetail, ProductList, EditItem};
+use crate::pages::{ProductDetail, ProductList, EditItem, NotFound};
 
 
 #[derive(Debug, Clone, PartialEq, Routable)]
@@ -16,6 +16,9 @@ pub enum Route {
     ProductDetail{ id: String },
     #[at("/GoodsManagementSystem-Rust/edit/:id")]
     EditItem{ id: String },
+    #[not_found]
+    #[at("/GoodsManagementSystem-Rust/404")]
+    NotFound,
 }
 
 fn switch(route: Route) -> Html {
@@ -23,6 +26,7 @@ fn switch(route: Route) -> Html {
         Route::ProductList => html! { <ProductList /> },
         Route::ProductDetail { id } => html! {<ProductDetail id={id} />},
         Route::EditItem { id } => html! {<EditItem id={id} />},
+        Route::NotFound => html! {<NotFound />},
     }
 }
 
