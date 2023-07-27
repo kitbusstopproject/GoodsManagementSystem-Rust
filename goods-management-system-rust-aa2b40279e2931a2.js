@@ -918,7 +918,7 @@ function initSync(module) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('goods-management-system-rust-4015ace9b7b0ca7d_bg.wasm', import.meta.url);
+        input = new URL('goods-management-system-rust-aa2b40279e2931a2_bg.wasm', import.meta.url);
     }
     const imports = getImports();
 

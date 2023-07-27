@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --color-screen: #fef8f1;
+    --color-screen-2nd: #ffffff;
+    --color-action: #d2c1a2;
+    --color-action-hover: #e2d1b0;
+    --color-action-disabled: #fff1d6;
+    --color-action-label: #ffffff;
+    --color-action-label-disabled: #ffffff;
+    --color-separator: #cbd5e1;
+    --color-word: #111827;
+    --color-word-2nd: #374151;
+    --color-word-hover: #5f718d;
+    --color-word-disabled: #cbd5e1; 
+    --color-layer: #eff3f8;
+    --color-layer-2nd: #fafaf9;
+    --color-error: #f56565;
+    --color-accents: #8c9cb1;
+}
+
+[data-theme="dark"] {
+    --color-screen: #0b101a;
+    --color-screen-2nd: #252d39;
+    --color-action: #048dcd;
+    --color-action-hover: #019ae1;
+    --color-action-disabled: #69717D;
+    --color-action-label: #ffffff;
+    --color-action-label-disabled: #BCC0C5;
+    --color-separator: #cbd5e1;
+    --color-word: #ffffff;
+    --color-word-2nd: #e7e7e7;
+    --color-word-hover: #bebebe;
+    --color-word-disabled: #9da6b1;
+    --color-layer: #000000;
+    --color-layer-2nd: #000000;
+    --color-error: #ffffff;
+    --color-accents: #048dcd;
+}
