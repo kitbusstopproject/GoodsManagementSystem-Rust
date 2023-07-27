@@ -16,3 +16,5 @@ NFCタグを用いた物品管理アプリケーション
 pnpm install
 pnpm dev
 ```
+
+[localhost:8080/GoodsManagementSystem-Rust](http://localhost:8080/GoodsManagementSystem-Rust)
