@@ -8,12 +8,13 @@ use crate::pages::{ProductDetail, ProductList, EditItem};
 
 
 #[derive(Debug, Clone, PartialEq, Routable)]
-enum Route {
-    #[at("/")]
+// NOTE: github pagesではルートパスにプロジェクト名が付与されるので、ルートパスを変更している
+pub enum Route {
+    #[at("/GoodsManagementSystem-Rust/")] // <- this is the default route
     ProductList,
-    #[at("/product/:id")]
+    #[at("/GoodsManagementSystem-Rust/product/:id")]
     ProductDetail{ id: String },
-    #[at("/edit/:id")]
+    #[at("/GoodsManagementSystem-Rust/edit/:id")]
     EditItem{ id: String },
 }
 
@@ -28,11 +29,11 @@ fn switch(route: Route) -> Html {
 #[function_component(Main)]
 pub fn app() -> Html {
     html! {
-        <Layout>
-            <BrowserRouter>
+        <BrowserRouter>
+            <Layout>
                 <Switch<Route> render={switch} /> // <- must be child of <BrowserRouter>
-            </BrowserRouter>
-        </Layout>
+            </Layout>
+        </BrowserRouter>
     }
 }
 

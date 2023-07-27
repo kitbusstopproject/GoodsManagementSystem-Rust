@@ -9,10 +9,12 @@ NFCタグを用いた物品管理アプリケーション
 - node
 - pnpm
 - cargo
-- trunk
+- trunk v17
 
 
 ```
 pnpm install
 pnpm dev
 ```
+
+[localhost:8080/GoodsManagementSystem-Rust](http://localhost:8080/GoodsManagementSystem-Rust)
