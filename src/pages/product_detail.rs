@@ -9,7 +9,7 @@ use firestore_hooks::{use_document, use_collection, NotFetched};
 // modelモジュールから構造体をインポート
 use model::LendingLog;
 
-// ProductDetailProps構造体の定義。商品のIDを受け取るためのプロパティ
+// ProductDetailProps構造体の定義
 #[derive(Clone, Properties, PartialEq)]
 pub struct ProductDetailProps {
     pub id: String,
@@ -54,7 +54,7 @@ pub fn product_detail(props: &ProductDetailProps) -> Html {
             html! {
                 <div class="flex flex-col">
                     <h1 class="text-2xl">{ "Product Detail" }</h1>
-                    <table cellpadding="10">
+                    <table cellpadding="10" class="table-fixed">
                         <tbody>
                             <tr>
                                 <td style="font-weight: bold;">{ "コメント" }</td>
