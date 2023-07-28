@@ -12,7 +12,7 @@ pub fn product_list() -> Html {
     let docs = use_collection::<Item>(
         &"".to_string(),
     );
-    log::info!("col: {:?}", docs);
+    let show_lending = use_state(|| false);
     let state = (|| Ok(docs?))();
     match state {
         Err(NotFetched::Loading) => {
@@ -22,7 +22,14 @@ pub fn product_list() -> Html {
             return html! { <div>{ "エラーが発生しました" }</div> }
         }
         Ok(docs) => {
-            let table_rows = docs.iter().map(|item| {
+            let show_lending = show_lending.clone();
+            let filtered_docs = if *show_lending {
+                docs.iter().filter(|item| item.is_lending).collect::<Vec<&Item>>()
+            } else {
+                docs.iter().collect::<Vec<&Item>>()
+            };
+            let button_text = if *show_lending { "全て表示" } else { "貸出中のみ" };
+            let table_rows = filtered_docs.iter().map(|item| {
                 let date = Local.timestamp_opt(
                     item.registered_date.seconds as i64,
                     item.registered_date.nanoseconds as u32)
@@ -50,8 +57,14 @@ pub fn product_list() -> Html {
             });
             
             html! {
-                <div class="flex flex-col">
+                <div class="flex flex-col gap-6">
                     <h1 class="text-2xl">{ "Product List" }</h1>
+                    <button
+                        class="w-1/3 rounded-md bg-action hover:bg-action-hover font-bold py-4 px-8"
+                        onclick={Callback::from(move |_| show_lending.set(!*show_lending))}
+                    >
+                        { button_text }
+                    </button>
                     <div class="overflow-x-scroll">
                         <table cellpadding="10" class="table-fixed text-left divide-y divide-word whitespace-nowrap mb-4">
                             <thead>
