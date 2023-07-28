@@ -1,5 +1,3 @@
-use web_sys::{EventTarget, HtmlInputElement};
-use wasm_bindgen::JsCast;
 use yew::prelude::*;
 
 
@@ -7,23 +5,17 @@ use yew::prelude::*;
 pub struct InputProps {
     pub id: String,
     pub label: String,
-    pub value: String,
+    pub placeholder: String,
+    pub oninput: Callback<InputEvent>,
 }
 
 #[function_component(InputForm)]
 pub fn input(props: &InputProps) -> Html {
-    let value_handle = use_state(|| props.value.clone());
-    let value = (*value_handle).clone();
     
-    let on_change = {
-        let value_handle = value_handle.clone();
-        Callback::from(move |e: Event| {
-            let target: Option<EventTarget> = e.target();
-            let input = target.and_then(|t| t.dyn_into::<HtmlInputElement>().ok());
-
-            if let Some(input) = input {
-                value_handle.set(input.value());
-            }
+    let oninput = {
+        let oninput = props.oninput.clone();
+        Callback::from(move |e: InputEvent| {
+            oninput.emit(e);
         })
     };
 
@@ -33,12 +25,13 @@ pub fn input(props: &InputProps) -> Html {
                 {&props.label}
                 <br />
                 <input
-                    id={props.id.clone()}
-                    class="p-2.5 text-black w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 block sm:text-sm border-gra"
                     type="text"
-                    placeholder={props.value.clone()}
-                    value={value.clone()}
-                    onchange={on_change}
+                    id={props.id.clone()}
+                    aria-label={props.label.clone()}
+                    placeholder={props.placeholder.clone()}
+                    value={props.placeholder.clone()}
+                    {oninput}
+                    class="p-2.5 text-black w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 block sm:text-sm border-gra"
                 />
             </label>
         </div>

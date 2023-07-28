@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { collection, doc, getDoc, getDocs, getFirestore, setDoc } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getDoc, getDocs, getFirestore, setDoc, updateDoc } from 'firebase/firestore';
 
 const config = {
     apiKey: "AIzaSyBJ_GTJCC81jr9u9GPGWAcyCh81ZCBWWZg",
@@ -30,9 +30,21 @@ const getDocument = (path: string, onComplete: (res: string) => void, onError: (
     getDoc(docRef).then((res) => onComplete(JSON.stringify({id: res.id, ...res.data()}))).catch(onError);
 }
 
+const updateDocument = (path: string, data: string, onComplete: () => void, onError: () => void) => {
+    const docRef = doc(db, path);
+    updateDoc(docRef, JSON.parse(data)).then(onComplete).catch(onError);
+}
+
+const deleteDocument = (path: string, onComplete: () => void, onError: () => void) => {
+    const docRef = doc(db, path);
+    deleteDoc(docRef).then(onComplete).catch(onError);
+}
+
 //@ts-expect-error
 window._wasm_js_bridge = {
     addDocument,
     getCollection,
     getDocument,
+    updateDocument,
+    deleteDocument,
 }

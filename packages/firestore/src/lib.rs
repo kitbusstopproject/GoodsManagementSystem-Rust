@@ -76,3 +76,35 @@ where
         on_error,
     )
 }
+
+pub fn update_document<T>(
+    params: &T::ParamForPath,
+    document_id: &str,
+    document: &T,
+    on_complete: impl FnOnce() + 'static,
+    on_error: impl FnMut() + 'static,
+) where
+    T: FireStoreResource,
+{
+    crate::js_bridge::update_document(
+        (T::path(params) + "/" + document_id).as_str(),
+        serde_json::to_string(document).unwrap().as_str(),
+        on_complete,
+        on_error,
+    )
+}
+
+pub fn delete_document<T>(
+    params: &T::ParamForPath,
+    document_id: &str,
+    on_complete: impl FnOnce() + 'static,
+    on_error: impl FnMut() + 'static,
+) where
+    T: FireStoreResource,
+{
+    crate::js_bridge::delete_document(
+        (T::path(params) + "/" + document_id).as_str(),
+        on_complete,
+        on_error,
+    )
+}
