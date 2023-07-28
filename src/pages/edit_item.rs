@@ -25,8 +25,8 @@ pub fn edit_item(props: &EditItemProps) -> Html {
         }
         Ok(item) => {
             html! {
-                <div class="pr-8">
-                    <h1 class="text-2xl mb-6">{ "Edit Item" }</h1>
+                <div class="">
+                    <h1 class="text-2xl font-bold mb-6">{ "編集" }</h1>
                     <form>
                         <div class="flex flex-col w-100">
                             <InputForm id="item_name" label="名称" value={item.item_name.clone()} />

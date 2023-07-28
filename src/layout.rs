@@ -38,12 +38,12 @@ pub fn layout(props: &ChildrenOnlyProps) -> Html {
     html! {
         <div class="transition-color bg-screen min-h-screen h-max text-word"  data-theme={if dark_mode {"dark"} else { "light"}}>
             <header class="flex items-center w-full border-gray-400 border-solid border-b px-4 py-3">
-                <Link<Route> classes="hover:underline text-xl" to={Route::ProductList}>{"物品管理しちゃおっかなー"}</Link<Route>>
+                <Link<Route> classes="hover:underline text-xl font-bold" to={Route::ProductList}>{"物品管理しちゃおっかなー"}</Link<Route>>
                 <button class="ml-auto text-3xl" onclick={set_theme.reform(move |_| if dark_mode { "light".into() } else { "dark".into() })}>
                     {if dark_mode {"🌞"} else {"🌚"}}
                 </button>
             </header>
-            <main class="pl-8 py-10">
+            <main class="px-8 py-10">
                 { props.children.clone() }
             </main>
         </div>

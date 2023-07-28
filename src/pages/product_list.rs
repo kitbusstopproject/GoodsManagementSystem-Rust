@@ -37,7 +37,7 @@ pub fn product_list() -> Html {
                 let (date, _) = date.split_at(19);
                 let lending_state = if item.is_lending {
                     html!{
-                        <Link<Route> classes="hover:underline" to={Route::ProductDetail {id: item.lending_log_id.clone()}}>{"貸出中"}</Link<Route>>
+                        <Link<Route> classes="hover:underline text-action font-bold" to={Route::ProductDetail {id: item.lending_log_id.clone()}}>{"貸出中"}</Link<Route>>
                     }
                 } else {
                     html! { <>{ "-" }</> }
@@ -51,16 +51,16 @@ pub fn product_list() -> Html {
                         <td>{ &item.model_number }</td>
                         <td>{ &item.maker }</td>
                         <td>{ &item.supplier }</td>
-                        <td><Link<Route> classes="hover:underline" to={Route::EditItem {id: item.id.clone()}}>{ "Edit" }</Link<Route>></td>
+                        <td><Link<Route> classes="hover:underline text-action font-bold" to={Route::EditItem {id: item.id.clone()}}>{ "Edit" }</Link<Route>></td>
                     </tr>
                 }
             });
             
             html! {
                 <div class="flex flex-col gap-6">
-                    <h1 class="text-2xl">{ "Product List" }</h1>
+                    <h1 class="text-2xl font-bold">{ "物品一覧" }</h1>
                     <button
-                        class="w-1/3 rounded-md bg-action hover:bg-action-hover font-bold py-4 px-8"
+                        class="w-full sm:w-1/2 md:w-1/3 rounded-md bg-action hover:bg-action-hover font-bold py-4 px-8"
                         onclick={Callback::from(move |_| show_lending.set(!*show_lending))}
                     >
                         { button_text }
