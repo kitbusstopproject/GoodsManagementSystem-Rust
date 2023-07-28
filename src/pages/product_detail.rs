@@ -51,20 +51,20 @@ pub fn product_detail(props: &ProductDetailProps) -> Html {
             let (date, _) = date.split_at(19);
     
             html! {
-                <div class="flex flex-col">
-                    <h1 class="text-2xl">{ "Product Detail" }</h1>
-                    <table cellpadding="10" class="table-fixed">
+                <div class="flex flex-col gap-6">
+                    <h1 class="text-2xl font-bold">{ "貸出ログ" }</h1>
+                    <table cellpadding="10" class="table text-left">
                         <tbody>
                             <tr>
-                                <td style="font-weight: bold;">{ "コメント" }</td>
+                                <th>{ "コメント" }</th>
                                 <td>{ &lending_logs_data.comments }</td>
                             </tr>
                             <tr>
-                                <td style="font-weight: bold;">{ "氏名" }</td>
+                                <th>{ "氏名" }</th>
                                 <td>{ &lending_logs_data.name }</td>
                             </tr>
                             <tr>
-                                <td style="font-weight: bold;">{ "貸出日" }</td>
+                                <th>{ "貸出日" }</th>
                                 <td>{ date }</td>
                             </tr>
                         </tbody>

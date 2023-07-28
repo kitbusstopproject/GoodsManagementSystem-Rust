@@ -1,11 +1,7 @@
 name: pr_check
 
 on:
-  workflow_dispatch:
-  push:
   pull_request:
-    branches: 
-      - main
 
 env:
   CARGO_TERM_COLOR: always
