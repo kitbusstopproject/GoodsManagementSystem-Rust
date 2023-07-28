@@ -11,6 +11,10 @@ extern "C" {
     fn getCollection(path: &str, on_complete: &JsValue, on_error: &JsValue);
     #[wasm_bindgen(js_name = "getDocument",js_namespace = ["window","_wasm_js_bridge"])]
     fn getDocument(path: &str, on_complete: &JsValue, on_error: &JsValue);
+    #[wasm_bindgen(js_name = "deleteDocument",js_namespace = ["window","_wasm_js_bridge"])]
+    fn deleteDocument(path: &str, on_complete: &JsValue, on_error: &JsValue);
+    #[wasm_bindgen(js_name = "updateDocument",js_namespace = ["window","_wasm_js_bridge"])]
+    fn updateDocument(path: &str, data: &str, on_complete: &JsValue, on_error: &JsValue);
 }
 
 pub fn add_document(
@@ -48,4 +52,29 @@ pub fn get_document_json(
     });
     let on_error: JsValue = Closure::once_into_js(on_error);
     getDocument(path, &on_complete, &on_error)
+}
+
+pub fn delete_document(
+    path: &str,
+    on_complete: impl FnOnce() + 'static,
+    on_error: impl FnOnce() + 'static,
+) {
+    let on_complete: JsValue = Closure::once_into_js(|| {
+        on_complete();
+    });
+    let on_error: JsValue = Closure::once_into_js(on_error);
+    deleteDocument(path, &on_complete, &on_error)
+}
+
+pub fn update_document(
+    path: &str,
+    json: &str,
+    on_complete: impl FnOnce() + 'static,
+    on_error: impl FnOnce() + 'static,
+) {
+    let on_complete: JsValue = Closure::once_into_js(|| {
+        on_complete();
+    });
+    let on_error: JsValue = Closure::once_into_js(on_error);
+    updateDocument(path, json, &on_complete, &on_error)
 }
